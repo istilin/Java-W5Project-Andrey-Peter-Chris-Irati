@@ -1,7 +1,7 @@
 public class Animal {
     private String name;
     private static int tempId = 100000000;
-    private  int animalId = 0;
+    private int animalId;
     private String species;
     private boolean sick = false;
     private int amountFood;
