@@ -8,7 +8,7 @@ public class Animal {
     private int amountMeds;
     private int attractiveness;
     private double animalPrice;
-    private boolean entertained = true;
+    private boolean entertained = false;
     private double profit;
     private Zoo zoo;
     private double extraFee = 0;
@@ -118,15 +118,15 @@ public class Animal {
         return profit;
     }
 
-    public void setProfit(double profit) {
-        this.profit = profit;
-    }
-
     public void feedAnimal(){
         zoo.getStock().put("AmountFood", zoo.getStock().get("AmountFood") - amountFood);
     }
 
     public void medicateAnimal(){
         zoo.getStock().put("AmountMeds", zoo.getStock().get("AmountMeds") - amountMeds);
+    }
+
+    public void entertainAnimal(){
+        entertained = true;
     }
 }

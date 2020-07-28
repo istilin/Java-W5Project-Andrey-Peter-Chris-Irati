@@ -4,12 +4,13 @@ public class Zoo {
     private String name = "Schönbrunn";
     private String address = "Maxingstraße 13b, 1130 Wien";
     private int numVisitors;
-    private int totalEmployees;
     HashMap <Integer, Animal> animals;
     private HashMap <String, Integer> stock;
     private HashMap <String, Integer> costs;
+    private HashMap <Integer, Employee> employees;
     private double totalSalary;
     private Vet vet;
+    private Manager manager;
 
     public Zoo(){
         animals = new HashMap<>();
@@ -22,10 +23,16 @@ public class Zoo {
         stock = new HashMap<>();
         stock.put("AmountFood", 2000);
         stock.put("AmountMeds", 2000);
+        employees = new HashMap<>();
+        manager = new Manager(this);
     }
 
     public String getName() {
         return name;
+    }
+
+    public Manager getManager() {
+        return manager;
     }
 
     public void setName(String name) {
@@ -46,14 +53,6 @@ public class Zoo {
 
     public void setNumVisitors(int numVisitors) {
         this.numVisitors = numVisitors;
-    }
-
-    public int getTotalEmployees() {
-        return totalEmployees;
-    }
-
-    public void setTotalEmployees(int totalEmployees) {
-        this.totalEmployees = totalEmployees;
     }
 
     public HashMap<Integer, Animal> getAnimals() {
@@ -102,7 +101,22 @@ public class Zoo {
         zoo.getVet().callVet(panther);
         System.out.println(panther.getProfit());
         System.out.println(zoo.getVet().getAnimalsCare().get(100000000).getName());
+        System.out.println(zoo.getManager().getName());
+        zoo.getManager().hireEmployee(new Employee("Peter"));
+        System.out.println(zoo.getEmployees().get(2000000).getPassword());
+        zoo.getVet().healAnimal(panther);
+        System.out.println(panther.getProfit());
+        System.out.println(zoo.getEmployees().get(2000000).checkAnimal(panther));
+        System.out.println(zoo.getEmployees().get(2000000).checkAnimal(panther));
+        System.out.println(zoo.getEmployees().get(2000000).checkAnimal(panther));
+        System.out.println(zoo.getEmployees().get(2000000).checkAnimal(panther));
+        System.out.println(zoo.getEmployees().get(2000000).checkAnimal(panther));
+        System.out.println(zoo.getEmployees().get(2000000).checkAnimal(panther));
+
 
     }
 
+    public HashMap<Integer, Employee> getEmployees() {
+        return employees;
+    }
 }

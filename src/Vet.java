@@ -17,4 +17,10 @@ public class Vet {
     public HashMap<Integer, Animal> getAnimalsCare() {
         return animalsCare;
     }
+
+    public void healAnimal(Animal animal){
+        zoo.getAnimals().put(animal.getAnimalId(), animal);
+        animalsCare.remove(animal.getAnimalId());
+        animal.setSick(false);
+    }
 }
