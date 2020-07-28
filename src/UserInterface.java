@@ -1,5 +1,6 @@
 
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -22,112 +23,149 @@ public class UserInterface {
 
 
     public void managerInterface() {
-        try{
-            CLS.main();
-        }catch(Exception e){
-            System.out.println(e);
-        }
+        clearConsole();
         boolean goOn = true;
         System.out.printf("\n WELCOME TO THE ZOO MANAGEMENT SYSTEM");
-        String menu = "\n 1. Get Report\n 2. Employee Management \n 3. Animal Management \n 4. Make a new order";
-        String reportMenu = " 1. Financial Report \n 2. Animal Report \n 3. Employee Report \n 4. Stock Report";
-        String financialReport = " 1. Visitor Income \n 2. Food Expenses \n 3. Medicine Expenses \n 4. Salary Expenses \n 5. Vet Expenses \n 6. New Animal Expenses \n 7. Animal Sell Income \n 8. Total Profit/Loss";
-        String animalReport = " 1. Number Per Species And In Total\n 2. Vet Call Per Species And In Total\n 3. Total Animals Sick Per Species And In Total";
-        String stockReport = " 1. Medicine \n 2. Food";
-        String employeeManagement = " 1. Add employee (login) \n 2. Fire employee\n 3. Check min employees\n 4. Assign Employees To Non Mandatory Tasks";
-        String animalManagement = " 1. Add Animal(New Or Old) \n 2. Sell Animal";
-        String makeOrder = " 1. Food \n 2. Medicine";
+        String menu = "\n 1. Get Report\n 2. Employee Management \n 3. Animal Management \n 4. Make a new order \n 0. Log out";
+        String reportMenu = " 0. GO BACK\n 1. Financial Report \n 2. Animal Report \n 3. Employee Report \n 4. Stock Report";
+        String financialReport = " 0. GO BACK\n 1. Visitor Income \n 2. Food Expenses \n 3. Medicine Expenses \n 4. Salary Expenses \n 5. Vet Expenses \n 6. New Animal Expenses \n 7. Animal Sell Income \n 8. Total Profit/Loss";
+        String animalReport = " 0. GO BACK\n 1. Number Per Species And In Total\n 2. Vet Call Per Species And In Total\n 3. Total Animals Sick Per Species And In Total";
+        String stockReport = " 0. GO BACK\n 1. Medicine \n 2. Food";
+        String employeeManagement = " 0. GO BACK\n 1. Add employee (login) \n 2. Fire employee\n 3. Check min employees\n 4. Assign Employees To Non Mandatory Tasks";
+        String animalManagement = " 0. GO BACK\n 1. Add Animal(New Or Old) \n 2. Sell Animal";
+        String makeOrder = " 0. GO BACK\n 1. Food \n 2. Medicine";
+        boolean letItPass = false;
+        int userInput = 0;
+        String message = "default message";
 
 
         while (goOn) {
-            System.out.println(menu);
-            int userInput = scan.nextInt();
+
+            clearConsole();
+            System.out.println(message + "\n");
+            message = "";
+            System.out.println("MANAGER HOME\n" + menu);
+            if(!letItPass){
+            userInput = scan.nextInt();
+            }
+
+
+
 
 
             switch (userInput) {
 
                 case 0:
+                    clearConsole();
                     goOn = false;
                     System.out.println("Thank you for using ZOO-Management-System");
                     break;
 
                 case 1:
+                    clearConsole();
                     System.out.println(reportMenu);
                     int userInput2 = scan.nextInt();
 
                     switch (userInput2) {
 
+                        case 0:
+                            break;
+
                         case 1:
+                            clearConsole();
                             System.out.println(financialReport);
                             int userFinRepChoice = scan.nextInt();
                             switch (userFinRepChoice) {
-                                case 1:
-                                    System.out.println("Visitor Income: ");
+                                case 0:
                                     break;
+
+                                case 1:
+//                                    boolean enterPressed = pressEnterToContinue();
+//                                    if(enterPressed){
+                                    message = "Visitor Income: ";
+                                       break;
+//                                    }
                                 case 2:
-                                    System.out.println("Food Expenses: ");
+                                    message = "Food Expenses: ";
                                     break;
                                 case 3:
-                                    System.out.println("Medicine Expenses: ");
+                                    message = "Medicine Expenses: ";
                                     break;
                                 case 4:
-                                    System.out.println("Salary Expenses: ");
+                                    message = "Salary Expenses: ";
                                     break;
                                 case 5:
-                                    System.out.println("Vet Expenses: ");
+                                    message = "Vet Expenses: ";
                                     break;
                                 case 6:
-                                    System.out.println("New Animal Expenses: ");
+                                    message = "New Animal Expenses: ";
                                     break;
                                 case 7:
-                                    System.out.println("Animal Sell Income: ");
+                                    message = "Animal Sell Income: ";
                                     break;
                                 case 8:
-                                    System.out.println("Total Profits: ");
+                                    message = "Total Profits: ";
                                     break;
                                 default:
-                                    System.out.println("command not found");
+                                    message = "command not found";
                                     break;
-                            }break;
+                            }
+                            break;
                         case 2:
+                            clearConsole();
                             System.out.println(animalReport);
                             int animalReportInterface = scan.nextInt();
                             switch (animalReportInterface) {
+                                case 0:
+                                    letItPass = true;
+                                    continue;
                                 case 1:
-                                    System.out.println("Number Per Species And In Total");
+                                    message = "Number Per Species And In Total";
                                     break;
                                 case 2:
-                                    System.out.println("Vet Call Per Species And In Total");
+                                    message = "Vet Call Per Species And In Total";
                                     break;
                                 case 3:
-                                    System.out.println("Animals Sick Per Species And In Total");
+                                    message = "Animals Sick Per Species And In Total";
                                     break;
                                 default:
-                                    System.out.println("command not found");
+                                    message = "command not found";
                                     break;
                             }
+                            break;
                         case 3:
-                            System.out.println("Employee Report: ");
+                            clearConsole();
+                            message = "Employee Report: ";
                             break;
                         case 4:
+                            clearConsole();
                             System.out.println(stockReport);
                             int stockReportInterface = scan.nextInt();
                             switch (stockReportInterface) {
                                 case 1:
-                                    System.out.println("Food: ");
+                                    message = "Medicine: ";
                                     break;
                                 case 2:
-                                    System.out.println("Medicine: ");
+                                    message = "Food: ";
                                     break;
                                 default:
-                                    System.out.println("command not found");
+                                    message = "command not found";
                                     break;
                             }
+                            break;
+                        default:
+                            clearConsole();
+                            message = "Command not found Irati";
+                            break;
                     }
+                    break;
                 case 2:
+                    clearConsole();
                     System.out.println(employeeManagement);
                     int userInput3 = scan.nextInt();
                     switch (userInput3) {
+                        case 0:
+                            break;
                         case 1:
                             System.out.println(" Add Employee: ");
                             break;
@@ -143,10 +181,13 @@ public class UserInterface {
                     }
                     break;
                 case 3:
+                    clearConsole();
                     System.out.println("Animal Management");
                     System.out.println(animalManagement);
                     int animalUserInput = scan.nextInt();
                     switch (animalUserInput) {
+                        case 0:
+                            break;
                         case 1:
                             System.out.println("Add Animal New or Old: ");
                             break;
@@ -159,17 +200,20 @@ public class UserInterface {
                     }
                     break;
                 case 4:
+                    clearConsole();
                     System.out.println(makeOrder);
                     int orderUserInput = scan.nextInt();
                     switch (orderUserInput) {
+                        case 0:
+                            break;
                         case 1:
-                            System.out.println("Food: ");
+                            message = "Food: ";
                             break;
                         case 2:
-                            System.out.println("Medicine: ");
+                            message = "Medicine: ";
                             break;
                         default:
-                            System.out.println("command not found");
+                            message = "command not found";
                             break;
 
                     }
@@ -191,6 +235,24 @@ public class UserInterface {
         String sendToVet = " 1. Send To Vet \n Don't Send To Vet";
 
     }
+
+    public void clearConsole() {
+        try {
+            CLS.main();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } catch (InterruptedException ex) {
+            ex.printStackTrace();
+        }
+}
+
+public boolean pressEnterToContinue(){
+        String pressedEnter = scan.nextLine();
+        if(pressedEnter.equals("")){
+            return true;
+        }
+        return false;
+}
 
 }
 /*    Financial Reports (visitor
