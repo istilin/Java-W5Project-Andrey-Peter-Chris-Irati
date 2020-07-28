@@ -12,6 +12,7 @@ public class Vet {
     public void callVet(Animal animal){
         zoo.getAnimals().remove(animal.getAnimalId());
         animalsCare.put(animal.getAnimalId(), animal);
+        animal.setVetTimes(animal.getVetTimes()+1);
     }
 
     public HashMap<Integer, Animal> getAnimalsCare() {

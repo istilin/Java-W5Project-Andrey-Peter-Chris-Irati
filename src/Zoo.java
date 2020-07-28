@@ -98,21 +98,34 @@ public class Zoo {
         System.out.println(panther.getAnimalPrice());
         System.out.println(zoo.getAnimals().get(100000000).getName());
         System.out.println(panther.getProfit());
-        zoo.getVet().callVet(panther);
-        System.out.println(panther.getProfit());
-        System.out.println(zoo.getVet().getAnimalsCare().get(100000000).getName());
-        System.out.println(zoo.getManager().getName());
-        zoo.getManager().hireEmployee(new Employee("Peter"));
-        System.out.println(zoo.getEmployees().get(2000000).getPassword());
-        zoo.getVet().healAnimal(panther);
-        System.out.println(panther.getProfit());
-        System.out.println(zoo.getEmployees().get(2000000).checkAnimal(panther));
-        System.out.println(zoo.getEmployees().get(2000000).checkAnimal(panther));
-        System.out.println(zoo.getEmployees().get(2000000).checkAnimal(panther));
-        System.out.println(zoo.getEmployees().get(2000000).checkAnimal(panther));
-        System.out.println(zoo.getEmployees().get(2000000).checkAnimal(panther));
-        System.out.println(zoo.getEmployees().get(2000000).checkAnimal(panther));
 
+        System.out.println(panther.getProfit());
+
+        System.out.println(zoo.getManager().getName());
+        zoo.getManager().hireEmployee(new Employee("Peter", zoo));
+        System.out.println(zoo.getEmployees().get(2000000).getPassword());
+        System.out.println(panther.getProfit());
+        System.out.println(zoo.getEmployees().get(2000000).checkAnimal(panther));
+        System.out.println(zoo.getEmployees().get(2000000).checkAnimal(panther));
+        System.out.println(zoo.getEmployees().get(2000000).checkAnimal(panther));
+        System.out.println(zoo.getEmployees().get(2000000).checkAnimal(panther));
+        System.out.println(zoo.getEmployees().get(2000000).checkAnimal(panther));
+        System.out.println(zoo.getEmployees().get(2000000).checkAnimal(panther));
+        zoo.getEmployees().get(2000000).medicateAnimal(panther);
+        System.out.println(panther.isSick());
+        zoo.getEmployees().get(2000000).medicateAnimal(panther);
+        System.out.println(panther.isSick());
+        zoo.getEmployees().get(2000000).medicateAnimal(panther);
+        System.out.println(panther.isSick());
+        zoo.getEmployees().get(2000000).medicateAnimal(panther);
+        System.out.println(panther.isSick());
+        zoo.getEmployees().get(2000000).medicateAnimal(panther);
+        System.out.println(panther.isSick());
+
+        System.out.println(panther.getSickTimes());
+        System.out.println(panther.getVetTimes());
+        zoo.getEmployees().get(2000000).sendToVet(panther);
+        System.out.println(panther.getVetTimes());
 
     }
 

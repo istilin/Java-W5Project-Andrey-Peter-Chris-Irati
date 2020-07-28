@@ -6,13 +6,15 @@ public class Employee {
     private static int tempId = 2000000;
     private String email;
     private String password;
+    private Zoo zoo;
 
-    public Employee(String name) {
+    public Employee(String name, Zoo zoo) {
         this.name = name;
         this.employeeId = tempId;
         this.email = Integer.toString(tempId) + "@gmail.com";
         this.password = name + Integer.toString(tempId);
         tempId++;
+        this.zoo = zoo;
     }
 
     public String getName() {
@@ -47,24 +49,34 @@ public class Employee {
         this.password = password;
     }
 
-    public void feedAnimal(Animal animal){
+    public void feedAnimal(Animal animal) {
         animal.feedAnimal();
     }
 
-    public void medicateAnimal(Animal animal){
+    public void medicateAnimal(Animal animal) {
         animal.medicateAnimal();
+        Random rand = new Random();
+        int n = rand.nextInt(100);
+        if (animal.isSick() && n<20){
+            animal.setSick(false);
+        }
     }
-    public void entertainAnimal(Animal animal){
+
+    public void entertainAnimal(Animal animal) {
         animal.entertainAnimal();
     }
 
-    public String checkAnimal(Animal animal) {
+    public boolean checkAnimal(Animal animal) {
         Random rand = new Random();
         int n = rand.nextInt(100);
-        if (n < 20) {
+        if (!animal.isSick() && n < 20) {
             animal.setSick(true);
+            animal.setSickTimes(animal.getSickTimes()+1);
         }
-        return Integer.toString(n) + Boolean.toString(animal.isSick());
+        return animal.isSick();
     }
 
+    public void sendToVet(Animal animal) {
+        zoo.getVet().callVet(animal);
+    }
 }

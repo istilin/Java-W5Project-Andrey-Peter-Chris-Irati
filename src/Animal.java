@@ -12,6 +12,8 @@ public class Animal {
     private double profit;
     private Zoo zoo;
     private double extraFee = 0;
+    private int sickTimes = 0;
+    private int vetTimes = 0;
 
     public Animal(String name, String species, int amountFood, int amountMeds, int attractiveness, double animalPrice, Zoo zoo){
         this.name = name;
@@ -128,5 +130,21 @@ public class Animal {
 
     public void entertainAnimal(){
         entertained = true;
+    }
+
+    public void setSickTimes(int sickTimes) {
+        this.sickTimes = sickTimes;
+    }
+
+    public void setVetTimes(int vetTimes) {
+        this.vetTimes = vetTimes;
+    }
+
+    public int getSickTimes() {
+        return sickTimes;
+    }
+
+    public int getVetTimes() {
+        return vetTimes;
     }
 }
