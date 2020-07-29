@@ -9,17 +9,90 @@ public class UserInterface {
     private static Scanner scan = new Scanner(System.in);
     private Zoo zoo;
 
-    public UserInterface(Zoo zoo, Vet vet) {
+    public UserInterface(Zoo zoo) {
+        programRoot(zoo);
+    }
+
+    public void programRoot(Zoo zoo){
         System.out.println("WELCOME:\nPlease Login To The System:\n 1. Manager Login \n 2. Employee Login");
         int enteredCommand = scan.nextInt();
         this.zoo = zoo;
         switch (enteredCommand) {
             case 1:
                 managerInterface();
+                break;
 
             case 2:
-                //employeeInterface();
+                employeeInterface();
+                break;
         }
+    }
+
+    public void employeeInterface() {
+        int employeeLogged = 0;
+
+        clearConsole();
+
+        System.out.println("Enter your email");
+        scan = new Scanner(System.in);
+        String eMail = scan.nextLine();
+        boolean loggedIn = true;
+        for(Employee employee : zoo.getEmployees().values()) {
+            if (employee.getEmail().equals(eMail)) {
+                System.out.println("Enter your password Mr." + employee.getName());
+                scan = new Scanner(System.in);
+                String password = scan.nextLine();
+                if (employee.getPassword().equals(password)) {
+                    System.out.println("Logged in successfully");
+                    employeeLogged = employee.getEmployeeId();
+                    loggedIn = false;
+                } else {
+                        System.out.println("Password doesnt match for the email provided, try again");
+                        employeeInterface();
+
+                }
+            }
+        }
+        if(loggedIn){
+            System.out.println("Try again, invalid data");
+            employeeInterface();
+        }
+
+        boolean goOn = true;
+        String menu = "0. Log Out\n 1. Medicate animal\n 2. Check Animal\n 3. Entertain Animal\n 4. Check Tasks Waiting To Be Done";
+        String writeReport = " 1. Is Animal Sick? \n";
+        String isSick = " 1. Animal Is Sick \n 2. Animal Is Not Sick";
+        String sendToVet = " 1. Send To Vet \n Don't Send To Vet";
+
+        int userInput = 0;
+        while (goOn){
+            clearConsole();
+            System.out.println("Employee HOME\n" + menu);
+            scan = new Scanner(System.in);
+            int userChoice = scan.nextInt();
+            switch (userChoice){
+                case 0:
+                    clearConsole();
+                    System.out.println("Thank you for using ZOO-Management-System");
+                    programRoot(zoo);
+                    break;
+
+                case 1:
+                    System.out.println("Which animal are you medicating: enter ID pls");
+                    zoo.printAllAnimals();
+                    scan = new Scanner(System.in);
+                    int animalID = scan.nextInt();
+                    zoo.getEmployees().get(employeeLogged).medicateAnimal(zoo.getAnimals().get(animalID));
+                case 2:
+                    System.out.println("Which animal do you want to check?: enter ID pls");
+                    zoo.printAllAnimals();
+                    scan = new Scanner(System.in);
+                    animalID = scan.nextInt();
+                    zoo.getEmployees().get(employeeLogged).checkAnimal(zoo.getAnimals().get(animalID));
+            }
+
+        }
+
     }
 
 
@@ -30,7 +103,7 @@ public class UserInterface {
         String menu = "\n 1. Get Report\n 2. Employee Management \n 3. Animal Management \n 4. Make a new order \n 0. Log out";
         String reportMenu = " 0. GO BACK\n 1. Financial Report \n 2. Animal Report \n 3. Employee Report \n 4. Stock Report";
         String financialReport = " 0. GO BACK\n 1. Visitor Income \n 2. Food Expenses \n 3. Medicine Expenses \n 4. Salary Expenses \n 5. Vet Expenses \n 6. New Animal Expenses \n 7. Animal Sell Income \n 8. Total Profit/Loss";
-        String animalReport = " 0. GO BACK\n 1. Number Per Species And In Total\n 2. Vet Call Per Species And In Total\n 3. Total Animals Sick Per Species And In Total";
+        String animalReport = " 0. GO BACK\n 1. Number Per Species And In Total\n 2. See all animals in the vet\n 3. Total Animals Sick Per Species And In Total";
         String stockReport = " 0. GO BACK\n 1. Medicine \n 2. Food";
         String employeeManagement = " 0. GO BACK\n 1. Add employee (login) \n 2. Fire employee\n 3. Check all employees\n 4. Assign Employees To Non Mandatory Tasks";
         String animalManagement = " 0. GO BACK\n 1. Add Animal(New Or Old) \n 2. Sell Animal";
@@ -57,9 +130,10 @@ public class UserInterface {
             switch (userInput) {
 
                 case 0:
+
                     clearConsole();
-                    goOn = false;
                     System.out.println("Thank you for using ZOO-Management-System");
+                    programRoot(zoo);
                     break;
 
                 case 1:
@@ -126,7 +200,8 @@ public class UserInterface {
                                     zoo.printAllAnimals();
                                     break;
                                 case 2:
-                                    message = "Vet Call Per Species And In Total";
+                                    message = "All the animals in the vet";
+                                    zoo.getVet().printAllAnimalsInTheVet();
                                     break;
                                 case 3:
                                     message = "Animals Sick Per Species And In Total";
@@ -139,6 +214,7 @@ public class UserInterface {
                         case 3:
                             clearConsole();
                             message = "Employee Report: ";
+                            zoo.printAllEmployees();
                             break;
                         case 4:
                             clearConsole();
@@ -175,6 +251,7 @@ public class UserInterface {
                             break;
                         case 2:
                             System.out.println(" Fire Employee: ");
+                            zoo.removeEmployee();
                             break;
                         case 3:
                             System.out.println(" Check All Employees: ");
@@ -236,13 +313,7 @@ public class UserInterface {
 
     }
 
-    public void employeeInterface() {
-        String employee = " 1. Write Report\n 2. Check Animals In Vet\n 3. Check Not Finished Task";
-        String writeReport = " 1. Is Animal Sick? \n";
-        String isSick = " 1. Animal Is Sick \n 2. Animal Is Not Sick";
-        String sendToVet = " 1. Send To Vet \n Don't Send To Vet";
 
-    }
 
     public void clearConsole() {
         try {

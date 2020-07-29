@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.Scanner;
 
 public class Employee {
     private String name;
@@ -61,20 +62,41 @@ public class Employee {
         if (animal.isSick() && n<20){
             animal.setSick(false);
         }
+        System.out.println(animal.getSpecies() + " with ID: " + animal.getAnimalId() + " received medication\n animal sick after medication: " + animal.isSick());
     }
 
     public void entertainAnimal(Animal animal) {
         animal.entertainAnimal();
     }
 
-    public boolean checkAnimal(Animal animal) {
+    public void checkAnimal(Animal animal) {
         Random rand = new Random();
         int n = rand.nextInt(100);
         if (!animal.isSick() && n < 20) {
             animal.setSick(true);
             animal.setSickTimes(animal.getSickTimes()+1);
         }
-        return animal.isSick();
+        System.out.println("The animal is sick: " + animal.isSick());
+       if(animal.isSick()){
+           System.out.println("Do you want to send this sick animal to the vet? YES/NO" );
+           Scanner scan = new Scanner(System.in);
+           String yesNo = scan.nextLine();
+           switch(yesNo){
+               case "YES":
+                   sendToVet(animal);
+                   System.out.println("The " + animal.getSpecies() + " with ID " + animal.getAnimalId() + " sent to the vet!");
+                   break;
+               case "NO":
+                   System.out.println("Really , let it rot the poor thing???");
+                   break;
+               default:
+                   System.out.println("Is it so hard to type YES or NO??");
+                   break;
+           }
+
+
+
+       }
     }
 
     public void sendToVet(Animal animal) {
