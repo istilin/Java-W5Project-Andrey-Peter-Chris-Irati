@@ -28,6 +28,19 @@ public class Animal {
         zoo.setAnimals(animalId, this);
         zoo.setAnimalSpecies(species, this);
     }
+    public Animal(String name, String species, Zoo zoo){
+        this.name = name;
+        this.species = species;
+        this.amountFood = zoo.getAnimalSpecies().get(species).get(0).amountFood;
+        this.amountMeds = zoo.getAnimalSpecies().get(species).get(0).amountMeds;
+        this.attractiveness = zoo.getAnimalSpecies().get(species).get(0).attractiveness;
+        this.animalPrice = zoo.getAnimalSpecies().get(species).get(0).animalPrice;
+        animalId = tempId;
+        tempId++;
+        this.zoo = zoo;
+        zoo.setAnimals(animalId, this);
+        zoo.setAnimalSpecies(species, this);
+    }
 
     public String getName() {
         return name;

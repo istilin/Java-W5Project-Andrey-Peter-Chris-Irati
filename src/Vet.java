@@ -7,6 +7,7 @@ public class Vet {
     public Vet(Zoo zoo){
         this.zoo = zoo;
     }
+
     public void callVet(Animal animal){
         zoo.getAnimals().remove(animal.getAnimalId());
         animalsCare.put(animal.getAnimalId(), animal);

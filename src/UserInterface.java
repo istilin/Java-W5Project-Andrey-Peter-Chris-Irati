@@ -47,9 +47,8 @@ public class UserInterface {
                     employeeLogged = employee.getEmployeeId();
                     loggedIn = false;
                 } else {
-                        System.out.println("Password doesnt match for the email provided, try again");
+                        System.out.println("Password doesn't match for the email provided, try again");
                         employeeInterface();
-
                 }
             }
         }
@@ -103,7 +102,7 @@ public class UserInterface {
         String menu = "\n 1. Get Report\n 2. Employee Management \n 3. Animal Management \n 4. Make a new order \n 0. Log out";
         String reportMenu = " 0. GO BACK\n 1. Financial Report \n 2. Animal Report \n 3. Employee Report \n 4. Stock Report";
         String financialReport = " 0. GO BACK\n 1. Visitor Income \n 2. Food Expenses \n 3. Medicine Expenses \n 4. Salary Expenses \n 5. Vet Expenses \n 6. New Animal Expenses \n 7. Animal Sell Income \n 8. Total Profit/Loss";
-        String animalReport = " 0. GO BACK\n 1. Number Per Species And In Total\n 2. See all animals in the vet\n 3. Total Animals Sick Per Species And In Total";
+        String animalReport = " 0. GO BACK\n 1. Number in Total\n 2. Number per Species\n 3. See all animals in the vet\n 4. Total Animals Sick Per Species And In Total";
         String stockReport = " 0. GO BACK\n 1. Medicine \n 2. Food";
         String employeeManagement = " 0. GO BACK\n 1. Add employee (login) \n 2. Fire employee\n 3. Check all employees\n 4. Assign Employees To Non Mandatory Tasks";
         String animalManagement = " 0. GO BACK\n 1. Add Animal(New Or Old) \n 2. Sell Animal";
@@ -196,14 +195,17 @@ public class UserInterface {
                                     letItPass = true;
                                     break;
                                 case 1:
-                                    message = "Number Per Species And In Total";
+                                    message = "Number in Total";
                                     zoo.printAllAnimals();
                                     break;
                                 case 2:
+                                    zoo.printAllAnimalsSpecies();
+                                    break;
+                                case 3:
                                     message = "All the animals in the vet";
                                     zoo.getVet().printAllAnimalsInTheVet();
                                     break;
-                                case 3:
+                                case 4:
                                     message = "Animals Sick Per Species And In Total";
                                     break;
                                 default:

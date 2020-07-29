@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Employee {
     private String name;
-    private int employeeId;
+    final int employeeId;
     private static int tempId = 2000000;
     private String email;
     private String password;
@@ -29,10 +29,6 @@ public class Employee {
 
     public int getEmployeeId() {
         return employeeId;
-    }
-
-    public void setEmployeeId(int employeeId) {
-        this.employeeId = employeeId;
     }
 
     public String getEmail() {
@@ -74,30 +70,38 @@ public class Employee {
         int n = rand.nextInt(100);
         if (!animal.isSick() && n < 20) {
             animal.setSick(true);
-            animal.setSickTimes(animal.getSickTimes()+1);
+            animal.setSickTimes(animal.getSickTimes() + 1);
         }
         System.out.println("The animal is sick: " + animal.isSick());
-       if(animal.isSick()){
-           System.out.println("Do you want to send this sick animal to the vet? YES/NO" );
-           Scanner scan = new Scanner(System.in);
-           String yesNo = scan.nextLine();
-           switch(yesNo){
-               case "YES":
-                   sendToVet(animal);
-                   System.out.println("The " + animal.getSpecies() + " with ID " + animal.getAnimalId() + " sent to the vet!");
-                   break;
-               case "NO":
-                   System.out.println("Really , let it rot the poor thing???");
-                   break;
-               default:
-                   System.out.println("Is it so hard to type YES or NO??");
-                   break;
-           }
+        if (animal.isSick()) {
+            System.out.println("Do you want to send this sick animal to the vet? YES/NO");
+            Scanner scan = new Scanner(System.in);
+            String yesNo = scan.nextLine();
+            switch (yesNo) {
+                case "YES":
+                    sendToVet(animal);
+                    System.out.println("The " + animal.getSpecies() + " with ID " + animal.getAnimalId() + " sent to the vet!");
+                    break;
+                case "NO":
+                    System.out.println("Really , let it rot the poor thing???");
+                    break;
+                default:
+                    System.out.println("Is it so hard to type YES or NO??");
+                    break;
+            }
 
-
+        }
+    }
+           public void checkSickAnimal(Animal animal){
+               Random rand2 = new Random();
+               int n2 = rand2.nextInt(100);
+               if (!animal.isSick() && n2 < 20) {
+                   animal.setSick(true);
+                   animal.setSickTimes(animal.getSickTimes()+1);
+               }
 
        }
-    }
+
 
     public void sendToVet(Animal animal) {
         zoo.getVet().callVet(animal);

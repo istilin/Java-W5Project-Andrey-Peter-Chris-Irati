@@ -166,6 +166,21 @@ public class Zoo {
         }
     }
 
+    public void printAllAnimalsSpecies(){
+        System.out.println("Animals per species in the zoo: \n");
+        for(String species : animalSpecies.keySet()) {
+            System.out.println("  " + species + ": " + animalSpecies.get(species).size());
+        }
+        System.out.println("");
+
+        for(String species : animalSpecies.keySet()){
+            System.out.println(species + ": ");
+            for(Animal animalSpecies : animalSpecies.get(species)){
+                System.out.println("  - " + animalSpecies);
+            }
+        }
+    }
+
     public void addEmployee(){
         System.out.println("Enter the name of the employee");
         scan = new Scanner(System.in);
