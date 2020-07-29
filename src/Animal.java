@@ -26,6 +26,7 @@ public class Animal {
         tempId++;
         this.zoo = zoo;
         zoo.setAnimals(animalId, this);
+        zoo.setAnimalSpecies(species, this);
     }
 
     public String getName() {

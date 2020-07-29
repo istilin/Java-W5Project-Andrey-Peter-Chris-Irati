@@ -12,6 +12,7 @@ public class Zoo {
     private double totalSalary;
     private Vet vet;
     private Manager manager;
+    private HashMap <String, ArrayList<Animal> > animalSpecies;
 
     public Zoo(){
         animals = new HashMap<>();
@@ -26,6 +27,7 @@ public class Zoo {
         stock.put("AmountMeds", 2000);
         employees = new HashMap<>();
         manager = new Manager(this);
+        animalSpecies = new HashMap<>();
 
     }
 
@@ -87,6 +89,19 @@ public class Zoo {
 
     public void setTotalSalary(double totalSalary) {
         this.totalSalary = totalSalary;
+    }
+
+    public void setAnimalSpecies(String species, Animal animal ) {
+        if (animalSpecies.containsKey(species)){
+            animalSpecies.get(species).add(animal);
+        }
+        else{
+            animalSpecies.put(species, new ArrayList<Animal>(Arrays.asList(animal)));
+        }
+    }
+
+    public HashMap<String, ArrayList<Animal>> getAnimalSpecies() {
+        return animalSpecies;
     }
 
     public Vet getVet() {

@@ -303,26 +303,20 @@ public class UserInterface {
 
                     }
                     break;
-
-
             }
-
-
         }
-
-
     }
 
 
 
     public void clearConsole() {
-        try {
+        /*try {
             CLS.main();
         } catch (IOException ex) {
             ex.printStackTrace();
         } catch (InterruptedException ex) {
             ex.printStackTrace();
-        }
+        }*/
 }
 
 public boolean pressEnterToContinue(){
