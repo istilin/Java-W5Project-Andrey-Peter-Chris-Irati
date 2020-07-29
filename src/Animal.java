@@ -25,7 +25,7 @@ public class Animal {
         animalId = tempId;
         tempId++;
         this.zoo = zoo;
-        zoo.getAnimals().put(animalId, this);
+        zoo.setAnimals(animalId, this);
     }
 
     public String getName() {
@@ -146,5 +146,16 @@ public class Animal {
 
     public int getVetTimes() {
         return vetTimes;
+    }
+
+    @Override
+    public String toString() {
+        return   "animalId=" + animalId +
+                ", name='" + name + '\'' +
+                ", species='" + species + '\'' +
+                ", amountFood=" + amountFood +
+                ", amountMeds=" + amountMeds +
+                ", attractiveness=" + attractiveness
+                ;
     }
 }

@@ -7,11 +7,12 @@ public class UserInterface {
 
 
     private static Scanner scan = new Scanner(System.in);
+    private Zoo zoo;
 
-
-    public UserInterface() {
+    public UserInterface(Zoo zoo, Vet vet) {
         System.out.println("WELCOME:\nPlease Login To The System:\n 1. Manager Login \n 2. Employee Login");
         int enteredCommand = scan.nextInt();
+        this.zoo = zoo;
         switch (enteredCommand) {
             case 1:
                 managerInterface();
@@ -31,7 +32,7 @@ public class UserInterface {
         String financialReport = " 0. GO BACK\n 1. Visitor Income \n 2. Food Expenses \n 3. Medicine Expenses \n 4. Salary Expenses \n 5. Vet Expenses \n 6. New Animal Expenses \n 7. Animal Sell Income \n 8. Total Profit/Loss";
         String animalReport = " 0. GO BACK\n 1. Number Per Species And In Total\n 2. Vet Call Per Species And In Total\n 3. Total Animals Sick Per Species And In Total";
         String stockReport = " 0. GO BACK\n 1. Medicine \n 2. Food";
-        String employeeManagement = " 0. GO BACK\n 1. Add employee (login) \n 2. Fire employee\n 3. Check min employees\n 4. Assign Employees To Non Mandatory Tasks";
+        String employeeManagement = " 0. GO BACK\n 1. Add employee (login) \n 2. Fire employee\n 3. Check all employees\n 4. Assign Employees To Non Mandatory Tasks";
         String animalManagement = " 0. GO BACK\n 1. Add Animal(New Or Old) \n 2. Sell Animal";
         String makeOrder = " 0. GO BACK\n 1. Food \n 2. Medicine";
         boolean letItPass = false;
@@ -83,6 +84,7 @@ public class UserInterface {
 //                                    boolean enterPressed = pressEnterToContinue();
 //                                    if(enterPressed){
                                     message = "Visitor Income: ";
+
                                        break;
 //                                    }
                                 case 2:
@@ -118,9 +120,10 @@ public class UserInterface {
                             switch (animalReportInterface) {
                                 case 0:
                                     letItPass = true;
-                                    continue;
+                                    break;
                                 case 1:
                                     message = "Number Per Species And In Total";
+                                    zoo.printAllAnimals();
                                     break;
                                 case 2:
                                     message = "Vet Call Per Species And In Total";
@@ -168,12 +171,14 @@ public class UserInterface {
                             break;
                         case 1:
                             System.out.println(" Add Employee: ");
+                            zoo.addEmployee();
                             break;
                         case 2:
                             System.out.println(" Fire Employee: ");
                             break;
                         case 3:
-                            System.out.println(" Check Min Employees: ");
+                            System.out.println(" Check All Employees: ");
+                            zoo.printAllEmployees();
                             break;
                         case 4:
                             System.out.println(" Assign Employees To Non Mandatory Tasks: ");
@@ -189,10 +194,13 @@ public class UserInterface {
                         case 0:
                             break;
                         case 1:
-                            System.out.println("Add Animal New or Old: ");
+                            System.out.println("Add Animal: ");
+                            zoo.addAnimal();
+
                             break;
                         case 2:
                             System.out.println("Sell Animal");
+                            zoo.removeAnimal();
                             break;
                         default:
                             System.out.println("command not found");

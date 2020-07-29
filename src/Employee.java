@@ -15,6 +15,7 @@ public class Employee {
         this.password = name + Integer.toString(tempId);
         tempId++;
         this.zoo = zoo;
+
     }
 
     public String getName() {
@@ -78,5 +79,14 @@ public class Employee {
 
     public void sendToVet(Animal animal) {
         zoo.getVet().callVet(animal);
+    }
+
+    @Override
+    public String toString() {
+        return
+                "name='" + name + '\'' +
+                "| employeeId=" + employeeId +
+                "| email='" + email + '\'' +
+                "| password='" + password + '\'';
     }
 }
