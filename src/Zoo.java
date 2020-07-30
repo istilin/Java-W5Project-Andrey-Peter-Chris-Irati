@@ -150,8 +150,8 @@ public class Zoo {
         scan = new Scanner(System.in);
         int animalID = scan.nextInt();
         if(animals.containsKey(animalID)) {
-            animals.remove(animalID);
             System.out.println("Successfully removed the animal " + animals.get(animalID).getName());
+            animals.remove(animalID);
         } else {
             System.out.println("You entered an ID that doesn't exists, please try again");
             removeAnimal();
@@ -273,8 +273,8 @@ public class Zoo {
         scan = new Scanner(System.in);
         int employeeID = scan.nextInt();
         if(employees.containsKey(employeeID)) {
-            employees.remove(employeeID);
             System.out.println("Successfully removed the employee " + employees.get(employeeID).getName() + " you will never hear from him again");
+            employees.remove(employeeID);
         } else {
             System.out.println("You entered an ID that doesn't exists, please try again");
             removeEmployee();
