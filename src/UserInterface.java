@@ -1,6 +1,6 @@
 
 
-import java.io.IOException;
+
 import java.util.Scanner;
 
 public class UserInterface {
@@ -333,10 +333,7 @@ public class UserInterface {
 
 public boolean pressEnterToContinue(){
         String pressedEnter = scan.nextLine();
-        if(pressedEnter.equals("")){
-            return true;
-        }
-        return false;
+    return pressedEnter.equals("");
 }
 
 }
