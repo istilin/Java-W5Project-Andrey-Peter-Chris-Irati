@@ -378,13 +378,15 @@ public class UserInterface {
 
 
     public void clearConsole() {
-        /*try {
+        try {
             CLS.main();
+            System.out.println(zoo.theString);
+            zoo.theString = "";
         } catch (IOException ex) {
             ex.printStackTrace();
         } catch (InterruptedException ex) {
             ex.printStackTrace();
-        }*/
+        }
     }
 }
 /*

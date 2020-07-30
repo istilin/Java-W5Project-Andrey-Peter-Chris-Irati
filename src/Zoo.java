@@ -13,7 +13,7 @@ public class Zoo {
     private Vet vet;
     private Manager manager;
     private HashMap <String, ArrayList<Animal> > animalSpecies;
-
+    static String theString = "";
     public Zoo(){
         animals = new HashMap<>();
         costs = new HashMap<>();
@@ -161,17 +161,12 @@ public class Zoo {
 
     }
 
-    public void printAllAnimals(){
-        int total = animals.size() + this.getVet().getAnimalsCare().size();
-        System.out.println("\nTotal number of animals in the zoo: " + total);
-        System.out.println("*********************************************************************************\n" +
-                "    Animal ID    |      Name   |   Species  |  Food | Medicine | Attractiveness");
-
-        for(String species : animalSpecies.keySet()){
-            for(Animal animal : animalSpecies.get(species)){
-                System.out.println(animal.toString());
-            }
+    public String printAllAnimals(){    System.out.println("Total number of animals in the zoo: " + animals.size() + "\n");
+        for(Animal animal : animals.values()){
+            System.out.println(animal.toString());
+            theString +=  animal.toString() + "\n";
         }
+        return theString;
     }
 
     public void printAllAnimalsSpecies(){
