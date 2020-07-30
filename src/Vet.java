@@ -12,6 +12,7 @@ public class Vet {
         zoo.getAnimals().remove(animal.getAnimalId());
         animalsCare.put(animal.getAnimalId(), animal);
         animal.setVetTimes(animal.getVetTimes()+1);
+        numCalls++;
     }
 
     public HashMap<Integer, Animal> getAnimalsCare() {
@@ -30,5 +31,9 @@ public class Vet {
         for(Animal animal : animalsCare.values()){
             System.out.println(animal.toString());
         }
+    }
+
+    public int getNumCalls() {
+        return numCalls;
     }
 }

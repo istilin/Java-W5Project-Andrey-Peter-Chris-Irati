@@ -12,6 +12,7 @@ public class Animal {
     private double profit;
     private Zoo zoo;
     private double extraFee = 0;
+    static int sickTimesTotal = 0;
     private int sickTimes = 0;
     private int vetTimes = 0;
 
@@ -160,6 +161,14 @@ public class Animal {
 
     public int getVetTimes() {
         return vetTimes;
+    }
+
+    public static int getSickTimesTotal() {
+        return sickTimesTotal;
+    }
+
+    public static void setSickTimesTotal(int sickTimesTotal) {
+        Animal.sickTimesTotal = sickTimesTotal;
     }
 
     @Override

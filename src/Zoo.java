@@ -181,6 +181,71 @@ public class Zoo {
         }
     }
 
+    public void printSickAnimals(){
+        System.out.println("Sick animals:");
+        int counter = 0;
+        for (Animal animal: animals.values()){
+            if (animal.isSick()){
+                System.out.println("  - " + animal.getName() + " with ID " + animal.getAnimalId());
+                counter++;
+            }
+        }
+        System.out.println("Total animals sick: " + counter);
+    }
+
+    public void printSickAnimalsSpecies(){
+
+        System.out.println("Sick animals per species: \n");
+        for(String species : animalSpecies.keySet()) {
+            System.out.print("  " + species + ": ");
+            int counter2 = 0;
+            for (Animal animal : animalSpecies.get(species)) {
+                if (animal.isSick()) {
+                    counter2++;
+                }
+            }
+            System.out.println(counter2);
+        }
+        System.out.println("");
+
+        for(String species : animalSpecies.keySet()) {
+            System.out.println(species + ": ");
+            for (Animal animal : animalSpecies.get(species)) {
+                if (animal.isSick()) {
+                    System.out.println("  - " + animal.toString());
+                }
+            }
+        }
+    }
+
+    public void printVetCalls(){
+        System.out.println("Total vet calls: " + vet.getNumCalls());
+        System.out.println("Vet calls per Species: ");
+        for(String species : animalSpecies.keySet()) {
+            System.out.print("  - " + species + ": ");
+            int counter3 = 0;
+            for (Animal animal : animalSpecies.get(species)) {
+                counter3 += animal.getVetTimes();
+            }
+            System.out.println(counter3);
+        }
+    }
+
+    public void printSickAnimalsHistory(){
+        System.out.println("Total animals sick since the beginning of the zoo: " + Animal.getSickTimesTotal());
+        System.out.println("Total animals sick per species since the beginning of the zoo:");
+        for (String species: animalSpecies.keySet()){
+            int counter4 = 0;
+            for (Animal animal: animalSpecies.get(species)){
+                counter4 += animal.getSickTimes();
+            }
+            System.out.println("  - " + species + ": " + counter4);
+        }
+
+
+    }
+
+
     public void addEmployee(){
         System.out.println("Enter the name of the employee");
         scan = new Scanner(System.in);

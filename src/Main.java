@@ -56,8 +56,6 @@ public class Main {
             zoo.getEmployees().get(2000001).sendToVet(zoo.getAnimals().get(100000012));
         }
 
-
-
         zoo.printAllEmployees();
 
 

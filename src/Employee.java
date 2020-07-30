@@ -98,6 +98,7 @@ public class Employee {
                if (!animal.isSick() && n2 < 20) {
                    animal.setSick(true);
                    animal.setSickTimes(animal.getSickTimes()+1);
+                   animal.setSickTimesTotal(animal.getSickTimesTotal()+1);
                }
 
        }
