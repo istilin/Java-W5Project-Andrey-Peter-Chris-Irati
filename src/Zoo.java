@@ -150,8 +150,10 @@ public class Zoo {
         scan = new Scanner(System.in);
         int animalID = scan.nextInt();
         if(animals.containsKey(animalID)) {
+
             System.out.println("Successfully removed the animal " + animals.get(animalID).getName());
             animals.remove(animalID);
+
         } else {
             System.out.println("You entered an ID that doesn't exists, please try again");
             removeAnimal();

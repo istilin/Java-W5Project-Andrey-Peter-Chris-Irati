@@ -169,7 +169,7 @@ public class UserInterface {
         String animalReport = " 0. GO BACK\n 1. Number in Total\n 2. Number per Species\n 3. See all animals in the vet\n 4. Animals Sick in Total now\n 5. Animals Sick per Species now\n 6. Total Animals Sick in History\n 7. Total Vet calls and per Species";
         String stockReport = " 0. GO BACK\n 1. Medicine \n 2. Food";
         String employeeManagement = " 0. GO BACK\n 1. Add employee (login) \n 2. Fire employee\n 3. Check all employees";
-        String animalManagement = " 0. GO BACK\n 1. Add Animal(New Or Old) \n 2. Sell Animal";
+        String animalManagement = " 0. GO BACK\n 1. Add Animal(New Or Old) ";
         String makeOrder = " 0. GO BACK\n 1. Food \n 2. Medicine";
         boolean letItPass = false;
         int userInput = 0;
@@ -344,10 +344,10 @@ public class UserInterface {
                             zoo.addAnimal();
 
                             break;
-                        case 2:
+                        /*case 2:
                             System.out.println("Sell Animal");
                             zoo.removeAnimal();
-                            break;
+                            break;*/
                         default:
                             System.out.println("command not found");
                             break;
@@ -378,13 +378,13 @@ public class UserInterface {
 
 
     public void clearConsole() {
-        try {
+        /*try {
             CLS.main();
         } catch (IOException ex) {
             ex.printStackTrace();
         } catch (InterruptedException ex) {
             ex.printStackTrace();
-        }
+        }*/
     }
 }
 /*
