@@ -1,11 +1,9 @@
-
-
-
+import java.io.IOException;
 import java.util.Scanner;
 
 public class UserInterface {
 
-
+    String line = "-=-".repeat(18);
     private static Scanner scan = new Scanner(System.in);
     private Zoo zoo;
 
@@ -13,8 +11,8 @@ public class UserInterface {
         programRoot(zoo);
     }
 
-    public void programRoot(Zoo zoo){
-        System.out.println("WELCOME:\nPlease Login To The System:\n 1. Manager Login \n 2. Employee Login");
+    public void programRoot(Zoo zoo) {
+        System.out.println("WELCOME:\nPlease Login To The System:\n" + line + "\n| 1. Manager Login | 2. Employee Login | 3. Vet Login |\n" + line);
         int enteredCommand = scan.nextInt();
         this.zoo = zoo;
         switch (enteredCommand) {
@@ -25,8 +23,64 @@ public class UserInterface {
             case 2:
                 employeeInterface();
                 break;
+            case 3:
+                vetInterface();
+                break;
+            default:
+                System.out.println("Is it so hard to enter 1, 2 or 3???");
+                break;
         }
     }
+
+    String password = "";
+
+    public void vetInterface() {
+        clearConsole();
+        if (password.equals("")) {
+            System.out.println("Please enter Vets Password");
+            scan = new Scanner(System.in);
+            password = scan.nextLine();
+            if (!password.equals("Password")) {
+                System.out.println("Wrong Password, try again");
+                password = "";
+                vetInterface();
+            } else {
+                System.out.println("Logged in successfully");
+            }
+        }
+
+        String vetMenu = line + "\n|  1. Heal Animal | 0. Log Out  |\n" + line;
+        System.out.println(vetMenu);
+
+        scan = new Scanner(System.in);
+        int vetsChoice = scan.nextInt();
+
+        switch (vetsChoice) {
+            case 1:
+                System.out.println("Which animal are you applying treatment to? Please select the ID");
+                zoo.getVet().printAllAnimalsInTheVet();
+                scan = new Scanner(System.in);
+                int animalID = scan.nextInt();
+                if (zoo.getVet().getAnimalsCare().containsKey(animalID)) {
+                    zoo.getVet().healAnimal(zoo.getVet().getAnimalsCare().get(animalID));
+                    vetInterface();
+                } else {
+                    System.out.println("Animal not found in the Vet, please try again");
+                    vetInterface();
+                }
+                break;
+            case 0:
+                clearConsole();
+                System.out.println("Thank you for using ZOO-Management-System");
+                password = "";
+                programRoot(zoo);
+                break;
+
+        }
+
+
+    }
+
 
     public void employeeInterface() {
         int employeeLogged = 0;
@@ -37,7 +91,7 @@ public class UserInterface {
         scan = new Scanner(System.in);
         String eMail = scan.nextLine();
         boolean loggedIn = true;
-        for(Employee employee : zoo.getEmployees().values()) {
+        for (Employee employee : zoo.getEmployees().values()) {
             if (employee.getEmail().equals(eMail)) {
                 System.out.println("Enter your password Mr." + employee.getName());
                 scan = new Scanner(System.in);
@@ -47,12 +101,12 @@ public class UserInterface {
                     employeeLogged = employee.getEmployeeId();
                     loggedIn = false;
                 } else {
-                        System.out.println("Password doesn't match for the email provided, try again");
-                        employeeInterface();
+                    System.out.println("Password doesn't match for the email provided, try again");
+                    employeeInterface();
                 }
             }
         }
-        if(loggedIn){
+        if (loggedIn) {
             System.out.println("Try again, invalid data");
             employeeInterface();
         }
@@ -64,12 +118,12 @@ public class UserInterface {
         String sendToVet = " 1. Send To Vet \n Don't Send To Vet";
 
         int userInput = 0;
-        while (goOn){
+        while (goOn) {
             clearConsole();
             System.out.println("Employee HOME\n" + menu);
             scan = new Scanner(System.in);
             int userChoice = scan.nextInt();
-            switch (userChoice){
+            switch (userChoice) {
                 case 0:
                     clearConsole();
                     System.out.println("Thank you for using ZOO-Management-System");
@@ -97,6 +151,16 @@ public class UserInterface {
 
     public void managerInterface() {
         clearConsole();
+        System.out.println("Please enter Management Password");
+        scan = new Scanner(System.in);
+        String password = scan.nextLine();
+        if (!password.equals("Password")) {
+            System.out.println("Wrong Password, try again");
+            managerInterface();
+        } else {
+            System.out.println("Logged in successfully");
+        }
+
         boolean goOn = true;
         System.out.printf("\n WELCOME TO THE ZOO MANAGEMENT SYSTEM");
         String menu = "\n 1. Get Report\n 2. Employee Management \n 3. Animal Management \n 4. Make a new order \n 0. Log out";
@@ -109,7 +173,7 @@ public class UserInterface {
         String makeOrder = " 0. GO BACK\n 1. Food \n 2. Medicine";
         boolean letItPass = false;
         int userInput = 0;
-        String message = "default message";
+        String message = "";
 
 
         while (goOn) {
@@ -118,12 +182,9 @@ public class UserInterface {
             System.out.println(message + "\n");
             message = "";
             System.out.println("MANAGER HOME\n" + menu);
-            if(!letItPass){
-            userInput = scan.nextInt();
+            if (!letItPass) {
+                userInput = scan.nextInt();
             }
-
-
-
 
 
             switch (userInput) {
@@ -158,7 +219,7 @@ public class UserInterface {
 //                                    if(enterPressed){
                                     message = "Visitor Income: ";
 
-                                       break;
+                                    break;
 //                                    }
                                 case 2:
                                     message = "Food Expenses: ";
@@ -195,14 +256,12 @@ public class UserInterface {
                                     letItPass = true;
                                     break;
                                 case 1:
-                                    message = "Number in Total";
                                     zoo.printAllAnimals();
                                     break;
                                 case 2:
                                     zoo.printAllAnimalsSpecies();
                                     break;
                                 case 3:
-                                    message = "All the animals in the vet";
                                     zoo.getVet().printAllAnimalsInTheVet();
                                     break;
                                 case 4:
@@ -320,24 +379,24 @@ public class UserInterface {
     }
 
 
-
     public void clearConsole() {
-        /*try {
+        try {
             CLS.main();
         } catch (IOException ex) {
             ex.printStackTrace();
         } catch (InterruptedException ex) {
             ex.printStackTrace();
-        }*/
+        }
+    }
 }
-
+/*
 public boolean pressEnterToContinue(){
         String pressedEnter = scan.nextLine();
     return pressedEnter.equals("");
 }
 
 }
-/*    Financial Reports (visitor
+  Financial Reports (visitor
                                income, food expenses,
                        medicine expenses, salary
                                expenses, vet expenses, new

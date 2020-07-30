@@ -23,6 +23,7 @@ public class Vet {
         zoo.getAnimals().put(animal.getAnimalId(), animal);
         animalsCare.remove(animal.getAnimalId());
         animal.setSick(false);
+        System.out.println("Animal healed");
     }
 
     public void printAllAnimalsInTheVet(){
