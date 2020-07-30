@@ -28,7 +28,7 @@ public class Vet {
 
     public void printAllAnimalsInTheVet(){
         System.out.println("Printing all the animals in the vet");
-        System.out.println("number of animals:" + animalsCare.size());
+        System.out.println("Number of animals: " + animalsCare.size());
         for(Animal animal : animalsCare.values()){
             System.out.println(animal.toString());
         }

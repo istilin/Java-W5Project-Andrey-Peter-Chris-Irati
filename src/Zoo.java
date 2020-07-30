@@ -160,11 +160,15 @@ public class Zoo {
     }
 
     public void printAllAnimals(){
-        System.out.println("\nTotal number of animals in the zoo: " + animals.size());
-        System.out.println("*****************************************************************************\n" +
-                "Animal ID    |      Name   |   Species  |  Food | Medicine | Attractiveness");
-        for(Animal animal : animals.values()){
-            System.out.println(animal.toString());
+        int total = animals.size() + this.getVet().getAnimalsCare().size();
+        System.out.println("\nTotal number of animals in the zoo: " + total);
+        System.out.println("*********************************************************************************\n" +
+                "    Animal ID    |      Name   |   Species  |  Food | Medicine | Attractiveness");
+
+        for(String species : animalSpecies.keySet()){
+            for(Animal animal : animalSpecies.get(species)){
+                System.out.println(animal.toString());
+            }
         }
     }
 
@@ -179,16 +183,23 @@ public class Zoo {
     }
 
     public void printSickAnimals(){
+
         System.out.println("Sick animals:");
         int counter = 0;
-        for (Animal animal: animals.values()){
-            if (animal.isSick()){
-                System.out.println("  - " + animal.getName() + " with ID " + animal.getAnimalId());
-                counter++;
+        for(String species : animalSpecies.keySet()) {
+            for (Animal animal : animalSpecies.get(species)) {
+                if (animal.isSick()) {
+                    System.out.println("  - " + animal.getName() + " with ID " + animal.getAnimalId());
+                    counter++;
+                }
             }
         }
-        System.out.println("Total animals sick: " + counter);
+
+        System.out.println("");
+        System.out.println("Total current sick animals: " + counter);
     }
+
+
 
     public void printSickAnimalsSpecies(){
 
@@ -273,7 +284,7 @@ public class Zoo {
 
     public void printAllEmployees(){
         System.out.println("Printing all the employees");
-        System.out.println("\nEmployeeID |    Name      |  E-mail          |   Password    |");
+        System.out.println("\nEmployeeID   |    Name      |  E-mail             |   Password    |");
         for (Employee employee : employees.values()){
             System.out.println(employee.toString());
         }

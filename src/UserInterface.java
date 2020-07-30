@@ -163,12 +163,12 @@ public class UserInterface {
 
         boolean goOn = true;
         System.out.printf("\n WELCOME TO THE ZOO MANAGEMENT SYSTEM");
-        String menu = "\n 1. Get Report\n 2. Employee Management \n 3. Animal Management \n 4. Make a new order \n 0. Log out";
-        String reportMenu = " 0. GO BACK\n 1. Financial Report \n 2. Animal Report \n 3. Employee Report \n 4. Stock Report";
-        String financialReport = " 0. GO BACK\n 1. Visitor Income \n 2. Food Expenses \n 3. Medicine Expenses \n 4. Salary Expenses \n 5. Vet Expenses \n 6. New Animal Expenses \n 7. Animal Sell Income \n 8. Total Profit/Loss";
+        String menu = "\n 1. Get Report\n 2. Employee Management \n 3. Animal Management \n 0. Log out";
+        String reportMenu = " 0. GO BACK\n 1. Animal Report \n 2. Employee Report \n 3. Stock Report";
+        //String financialReport = " 0. GO BACK\n 1. Visitor Income \n 2. Food Expenses \n 3. Medicine Expenses \n 4. Salary Expenses \n 5. Vet Expenses \n 6. New Animal Expenses \n 7. Animal Sell Income \n 8. Total Profit/Loss";
         String animalReport = " 0. GO BACK\n 1. Number in Total\n 2. Number per Species\n 3. See all animals in the vet\n 4. Animals Sick in Total now\n 5. Animals Sick per Species now\n 6. Total Animals Sick in History\n 7. Total Vet calls and per Species";
         String stockReport = " 0. GO BACK\n 1. Medicine \n 2. Food";
-        String employeeManagement = " 0. GO BACK\n 1. Add employee (login) \n 2. Fire employee\n 3. Check all employees\n 4. Assign Employees To Non Mandatory Tasks";
+        String employeeManagement = " 0. GO BACK\n 1. Add employee (login) \n 2. Fire employee\n 3. Check all employees";
         String animalManagement = " 0. GO BACK\n 1. Add Animal(New Or Old) \n 2. Sell Animal";
         String makeOrder = " 0. GO BACK\n 1. Food \n 2. Medicine";
         boolean letItPass = false;
@@ -206,7 +206,7 @@ public class UserInterface {
                         case 0:
                             break;
 
-                        case 1:
+                        /*case 1:
                             clearConsole();
                             System.out.println(financialReport);
                             int userFinRepChoice = scan.nextInt();
@@ -246,8 +246,8 @@ public class UserInterface {
                                     message = "command not found";
                                     break;
                             }
-                            break;
-                        case 2:
+                            break;*/
+                        case 1:
                             clearConsole();
                             System.out.println(animalReport);
                             int animalReportInterface = scan.nextInt();
@@ -282,12 +282,12 @@ public class UserInterface {
                                     break;
                             }
                             break;
-                        case 3:
+                        case 2:
                             clearConsole();
                             message = "Employee Report: ";
                             zoo.printAllEmployees();
                             break;
-                        case 4:
+                        case 3:
                             clearConsole();
                             System.out.println(stockReport);
                             int stockReportInterface = scan.nextInt();
@@ -328,8 +328,6 @@ public class UserInterface {
                             System.out.println(" Check All Employees: ");
                             zoo.printAllEmployees();
                             break;
-                        case 4:
-                            System.out.println(" Assign Employees To Non Mandatory Tasks: ");
 
                     }
                     break;
@@ -355,7 +353,7 @@ public class UserInterface {
                             break;
                     }
                     break;
-                case 4:
+                /*case 4:
                     clearConsole();
                     System.out.println(makeOrder);
                     int orderUserInput = scan.nextInt();
@@ -373,7 +371,7 @@ public class UserInterface {
                             break;
 
                     }
-                    break;
+                    break;*/
             }
         }
     }

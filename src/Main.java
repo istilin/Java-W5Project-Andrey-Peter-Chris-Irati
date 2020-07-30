@@ -40,20 +40,80 @@ public class Main {
         for (Animal animal: zoo.getAnimals().values()){
             zoo.getEmployees().get(2000001).checkSickAnimal(animal);
         }
-        if (zoo.getAnimals().get(100000000).isSick()){
-            zoo.getEmployees().get(2000001).sendToVet(zoo.getAnimals().get(100000000));
+
+
+        for(String species : zoo.getAnimalSpecies().keySet()) {
+            for (Animal animal : zoo.getAnimalSpecies().get(species)) {
+                if (animal.isSick()){
+                    zoo.getEmployees().get(2000000).sendToVet(animal);
+                }
+            }
         }
-        if (zoo.getAnimals().get(100000003).isSick()){
-            zoo.getEmployees().get(2000001).sendToVet(zoo.getAnimals().get(100000003));
+
+
+
+        for(String species : zoo.getAnimalSpecies().keySet()) {
+            for (Animal animal : zoo.getAnimalSpecies().get(species)) {
+                if (zoo.getVet().getAnimalsCare().containsKey(animal.getAnimalId())) {
+                    zoo.getVet().healAnimal(animal);
+                }
+            }
         }
-        if (zoo.getAnimals().get(100000006).isSick()){
-            zoo.getEmployees().get(2000001).sendToVet(zoo.getAnimals().get(100000006));
+
+
+
+
+        for (Animal animal: zoo.getAnimals().values()){
+            zoo.getEmployees().get(2000000).checkSickAnimal(animal);
         }
-        if (zoo.getAnimals().get(100000009).isSick()){
-            zoo.getEmployees().get(2000001).sendToVet(zoo.getAnimals().get(100000009));
+        for (Animal animal: zoo.getAnimals().values()){
+            zoo.getEmployees().get(2000000).checkSickAnimal(animal);
         }
-        if (zoo.getAnimals().get(100000012).isSick()){
-            zoo.getEmployees().get(2000001).sendToVet(zoo.getAnimals().get(100000012));
+        for (Animal animal: zoo.getAnimals().values()){
+            zoo.getEmployees().get(2000000).checkSickAnimal(animal);
+        }
+
+        for(String species : zoo.getAnimalSpecies().keySet()) {
+            for (Animal animal : zoo.getAnimalSpecies().get(species)) {
+                if (animal.isSick()){
+                    zoo.getEmployees().get(2000001).sendToVet(animal);
+                }
+            }
+        }
+
+        for(String species : zoo.getAnimalSpecies().keySet()) {
+            for (Animal animal : zoo.getAnimalSpecies().get(species)) {
+                if (zoo.getVet().getAnimalsCare().containsKey(animal.getAnimalId())) {
+                    zoo.getVet().healAnimal(animal);
+                }
+            }
+        }
+
+
+        for (Animal animal: zoo.getAnimals().values()){
+            zoo.getEmployees().get(2000002).checkSickAnimal(animal);
+        }
+        for (Animal animal: zoo.getAnimals().values()){
+            zoo.getEmployees().get(2000002).checkSickAnimal(animal);
+        }
+        for (Animal animal: zoo.getAnimals().values()){
+            zoo.getEmployees().get(2000002).checkSickAnimal(animal);
+        }
+
+        if (zoo.getAnimals().get(100000002).isSick()){
+            zoo.getEmployees().get(2000002).sendToVet(zoo.getAnimals().get(100000002));
+        }
+        if (zoo.getAnimals().get(100000005).isSick()){
+            zoo.getEmployees().get(2000002).sendToVet(zoo.getAnimals().get(100000005));
+        }
+        if (zoo.getAnimals().get(100000008).isSick()){
+            zoo.getEmployees().get(2000002).sendToVet(zoo.getAnimals().get(100000008));
+        }
+        if (zoo.getAnimals().get(100000011).isSick()){
+            zoo.getEmployees().get(2000002).sendToVet(zoo.getAnimals().get(100000011));
+        }
+        if (zoo.getAnimals().get(100000014).isSick()){
+            zoo.getEmployees().get(2000002).sendToVet(zoo.getAnimals().get(100000014));
         }
 
         zoo.printAllEmployees();

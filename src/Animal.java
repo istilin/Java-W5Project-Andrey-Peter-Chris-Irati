@@ -174,7 +174,7 @@ public class Animal {
     }
     @Override
     public String toString() {
-        System.out.println("-----------------------------------------------------------------------------");
+        System.out.println("---------------------------------------------------------------------------------");
         StringBuilder stringBuilder = new StringBuilder();
         Formatter formatter = new Formatter(stringBuilder);
         String template ="    %5d    |%10s   |%9s   |%5d  | %5d    | %8d      ";
