@@ -110,10 +110,14 @@ public class Employee {
 
     @Override
     public String toString() {
-        return
-                "name='" + name + '\'' +
-                "| employeeId=" + employeeId +
-                "| email='" + email + '\'' +
-                "| password='" + password + '\'';
+        System.out.println("--------------------------------------------------------------");
+        StringBuilder stringBuilder = new StringBuilder();
+        Formatter formatter = new Formatter(stringBuilder);
+        String template = "  %5s    |%10s    | %13s   |%13s  |";
+
+        formatter.format(template, employeeId, name, email, password);
+
+        formatter.close();
+        return stringBuilder.toString();
     }
 }

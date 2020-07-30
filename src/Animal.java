@@ -1,3 +1,5 @@
+import java.util.Formatter;
+
 public class Animal {
     private String name;
     private static int tempId = 100000000;
@@ -170,15 +172,16 @@ public class Animal {
     public static void setSickTimesTotal(int sickTimesTotal) {
         Animal.sickTimesTotal = sickTimesTotal;
     }
-
     @Override
     public String toString() {
-        return   "animalId=" + animalId +
-                ", name='" + name + '\'' +
-                ", species='" + species + '\'' +
-                ", amountFood=" + amountFood +
-                ", amountMeds=" + amountMeds +
-                ", attractiveness=" + attractiveness
-                ;
+        System.out.println("-----------------------------------------------------------------------------");
+        StringBuilder stringBuilder = new StringBuilder();
+        Formatter formatter = new Formatter(stringBuilder);
+        String template ="    %5d    |%10s   |%9s   |%5d  | %5d    | %8d      ";
+
+        formatter.format(template, animalId, name, species,
+                amountFood, amountMeds, attractiveness);
+        formatter.close();
+        return  stringBuilder.toString();
     }
 }

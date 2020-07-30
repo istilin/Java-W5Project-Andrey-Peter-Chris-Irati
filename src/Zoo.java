@@ -160,23 +160,20 @@ public class Zoo {
     }
 
     public void printAllAnimals(){
-        System.out.println("Total number of animals in the zoo: " + animals.size() + "\n");
+        System.out.println("\nTotal number of animals in the zoo: " + animals.size());
+        System.out.println("*****************************************************************************\n" +
+                "Animal ID    |      Name   |   Species  |  Food | Medicine | Attractiveness");
         for(Animal animal : animals.values()){
             System.out.println(animal.toString());
         }
     }
 
     public void printAllAnimalsSpecies(){
-        System.out.println("Animals per species in the zoo: \n");
-        for(String species : animalSpecies.keySet()) {
-            System.out.println("  " + species + ": " + animalSpecies.get(species).size());
-        }
-        System.out.println("");
-
+        System.out.println("\nAnimals per species in the zoo: ");
         for(String species : animalSpecies.keySet()){
-            System.out.println(species + ": ");
+            System.out.println("\n"+species + "s: "+ animalSpecies.get(species).size());
             for(Animal animalSpecies : animalSpecies.get(species)){
-                System.out.println("  - " + animalSpecies);
+                System.out.println( animalSpecies);
             }
         }
     }
@@ -271,15 +268,14 @@ public class Zoo {
             System.out.println("You entered an ID that doesn't exists, please try again");
             removeEmployee();
         }
-
     }
 
 
     public void printAllEmployees(){
         System.out.println("Printing all the employees");
+        System.out.println("\nEmployeeID |    Name      |  E-mail          |   Password    |");
         for (Employee employee : employees.values()){
             System.out.println(employee.toString());
         }
     }
-
 }

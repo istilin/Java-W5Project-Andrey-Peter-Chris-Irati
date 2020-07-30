@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class UserInterface {
 
-    String line = "-=-".repeat(18);
+    String line = "-=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=-";
     private static Scanner scan = new Scanner(System.in);
     private Zoo zoo;
 
